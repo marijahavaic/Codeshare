@@ -21,7 +21,10 @@ class AppFixtures extends Fixture
         ->setUsername('codeshare')
         ->setPassword('$2y$13$4UbZtgjJ2J0JSmY45CZs4uGbUbckq1R.N64JltRbz7JTVpuo3YJzi') // mdp = admin
         ->setRoles(["ROLE_ADMIN"])
+        ->setSummary('Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur ut cumque quisquam reprehenderit nam provident velit quibusdam consectetur incidunt quo! Atque enim quod dolorum iste molestiae fugit beatae molestias explicabo.')
         ->setTitle('FULSTACK DEV')
+        ->setCity('Paris')
+        ->setCountry('France')
         ->setIsVerified(true)
         ;
 
