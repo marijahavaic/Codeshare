@@ -3,40 +3,44 @@
 {% block title %}Note{% endblock %}
 
 {% block body %}
-    <h1>Note</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ note.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ note.title }}</td>
-            </tr>
-            <tr>
-                <th>Content</th>
-                <td>{{ note.content }}</td>
-            </tr>
-            <tr>
-                <th>IsPublished</th>
-                <td>{{ note.isPublished ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>CreatedAt</th>
-                <td>{{ note.createdAt ? note.createdAt|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>EditedAt</th>
-                <td>{{ note.editedAt ? note.editedAt|date('Y-m-d') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_note_index') }}">back to list</a>
-
-    <a href="{{ path('app_note_edit', {'id': note.id}) }}">edit</a>
+    <section class="row gap-1">
+            <div class="mb-3">
+                <div class="d-flex align-items-center mb-5">
+                    <div class="me-3">
+                        <img src={{ asset('img/favicon.svg') }} class="rounded-pill border d-none d-md-block d-lg-block" width="80">
+                    </div>
+                    <div>
+                        <h3 class="h2 mt-3">{{note.user.username}} 
+                        {% if note.user.isPremium == 0 %}
+                            <span class="rounded-pill bg-warning text-light h6 px-2">Regular</span>
+                            {% else %}
+                            <span class="rounded-pill bg-primary text-light h6 px-2">PRO</span>
+                        {% endif %}</h3>
+                        <p class="fs-6 text-muted text-uppercase">{{note.user.title}}</p>
+                    </div>
+                </div> <!-- User -->
+                <div class="d-flex align-items-center justify-content-between border-bottom mb-3">
+                    <h2>{{ note.title }}</h2>
+                    <div>
+                        <p>
+                            Publié le {{ note.createdAt ? note.createdAt|date('d/m/Y') : '' }}
+                        </p>
+                    </div>
+                </div> <!-- Titre -->
+                <div class="border-bottom mb-5">
+                    <pre>                        
+                        <code>
+                        {{ note.content }}
+                        </code>
+                    </pre>
+                </div> <!-- La note -->
+                <div>
+                    <h6 class="mb-3">Télécharger le code au format PDF</h6>
+                    <a href="#" class="btn btn-primary"><i class="fas fa-file-pdf"></i> Télécharger</a>
+                </div> <!-- Télécharger -->
+        </div></section>
+    {#TODO: Ajoute le lien pour edit uniqment pour admin #}
+    {# <a href="{{ path('app_note_edit', {'id': note.id}) }}">edit</a> #}
 
     {{ include('note/_delete_form.html.twig') }}
 {% endblock %}
