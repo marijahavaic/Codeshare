@@ -51,7 +51,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $profileImg = null;
 
     #[ORM\Column]
-    private ?bool $isPremium = null;
+    private ?bool $isPremium = false;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Note::class, orphanRemoval: true)]
     private Collection $notes;

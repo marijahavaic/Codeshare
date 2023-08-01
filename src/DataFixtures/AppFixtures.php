@@ -21,6 +21,7 @@ class AppFixtures extends Fixture
         ->setUsername('codeshare')
         ->setPassword('$2y$13$4UbZtgjJ2J0JSmY45CZs4uGbUbckq1R.N64JltRbz7JTVpuo3YJzi') // mdp = admin
         ->setRoles(["ROLE_ADMIN"])
+        ->setTitle('FULSTACK DEV')
         ->setIsVerified(true)
         ;
 
@@ -37,7 +38,7 @@ class AppFixtures extends Fixture
             ->setIsPublished(true)
             ;
 
-            $manager->persist($notes);
+            $manager->persist($note);
         }
 
         $manager->flush();
