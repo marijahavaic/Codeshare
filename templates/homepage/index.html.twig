@@ -30,7 +30,7 @@
                 </div>
                 <div class="row gap-1 justify-content-center">
                     {% for note in notes %}
-                        <div class="border rounded col-30 m-1 p-2">
+                        <div class="border rounded col-3 m-1 p-2">
                             <h4>{{note.title}}</h4>
                             <p>{{note.content|slice(0,10)}}</p>
                             <a href="./note.html" class="btn btn-dark">Voir</a>
@@ -40,7 +40,11 @@
                 <div class="d-flex justify-content-center mt-3">
                     <nav aria-label="pagination">
                         <ul class="pagination">
-                            {{ knp_pagination_render(notes) }}
+                            {{ knp_pagination_render(notes, null, {}, {
+                                'align': 'center',
+                                'size': 'large',
+                                'rounded': true,
+                            }) }}
                         </ul>
                     </nav>
                 </div> <!-- Pagination -->
