@@ -39,7 +39,7 @@
                         <div class="border rounded col-3 m-1 p-2">
                             <h4>{{note.title}}</h4>
                             <p>{{note.content|slice(0,10)}}</p>
-                            <a href="./note.html" class="btn btn-dark">Voir</a>
+                            <a href={{ path('app_note_show', { id: note.id }) }} class="btn btn-dark">Voir</a>
                         </div>
                     {% endfor %}
                 </div> <!-- Liste des notes -->
