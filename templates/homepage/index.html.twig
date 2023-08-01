@@ -6,16 +6,22 @@
 
 <section class="row gap-1">
     <aside class="col-md-3 col-sm-12">
+    {% for item in user %}
         <img src={{ asset('img/favicon.svg') }} class="rounded-pill border d-none d-md-block d-lg-block" width="300">
-        <h3 class="h2 mt-3">Codeshare <span class="rounded-pill bg-primary text-light h6 px-2">PRO</span></h3>
+        <h3 class="h2 mt-3">{{item.username}}
+        {% if item.isPremium == 0 %}
+            <span class="rounded-pill bg-warning text-light h6 px-2">Regular</span>
+            {% else %}
+            <span class="rounded-pill bg-primary text-light h6 px-2">PRO</span>
+        {% endif %}
+        </h3>
         <p class="fs-6 text-muted text-uppercase"></p>
         <hr>
         <p class="fs-5">À propos</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur ut cumque quisquam
-            reprehenderit nam provident velit quibusdam consectetur incidunt quo! Atque enim quod dolorum iste
-            molestiae fugit beatae molestias explicabo.</p>
-        <p><i class="fas fa-map-marker-alt mx-1"></i>Paris, France</p>
-        <p><i class="fas fa-envelope mx-1"></i>hello@codeshare.fr</p>
+        <p>{{item.summary}}</p>
+        <p><i class="fas fa-map-marker-alt mx-1"></i>{{item.city}}, {{item.country}}</p>
+        <p><i class="fas fa-envelope mx-1"></i>{{item.email}}</p>
+        {% endfor %}
         <hr class="mb-5">
         <footer class="text-center text-muted my-5">
             © 2023 - Codeshare

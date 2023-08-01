@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\NoteRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,6 +17,7 @@ class HomepageController extends AbstractController
     #[Route('/', name: 'app_homepage')]
     public function index(
         NoteRepository $notes, // Chargement du repository Note
+        UserRepository $user, // Chargement du repository User
         PaginatorInterface $paginator, //Chargement de PaginatorInterface
         Request $request // Chargement de Request
     ): Response
@@ -36,6 +38,7 @@ class HomepageController extends AbstractController
         
         return $this->render('homepage/index.html.twig', [
             'notes' => $pagination,
+            'user' => $user->findAll(),
         ]);
     }
 }
