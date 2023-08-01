@@ -27,7 +27,7 @@ class HomepageController extends AbstractController
             100 // Pour limiter l'affichage
         );
 
-        // On utilise le paginator pour paginer les snippets
+        // On utilise le paginator pour paginer les notes
         $pagination = $paginator->paginate(
             $query, // Requête contenant les données à paginer
             $request->query->getInt('page', 1), // Numéro de la page en cours, 1 par défaut
