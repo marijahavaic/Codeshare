@@ -4,8 +4,6 @@
 
 {% block body %}
 
-
-
 <section class="row gap-1">
     <aside class="col-md-3 col-sm-12">
         <img src={{ asset('img/favicon.svg') }} class="rounded-pill border d-none d-md-block d-lg-block" width="300">
@@ -42,19 +40,7 @@
                 <div class="d-flex justify-content-center mt-3">
                     <nav aria-label="pagination">
                         <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link text-dark" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">«</span>
-                                </a>
-                            </li>
-                            <li class="page-item"><a class="page-link text-dark" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link text-dark" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link text-dark" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link text-dark" href="#" aria-label="Next">
-                                    <span aria-hidden="true">»</span>
-                                </a>
-                            </li>
+                            {{ knp_pagination_render(notes) }}
                         </ul>
                     </nav>
                 </div> <!-- Pagination -->
