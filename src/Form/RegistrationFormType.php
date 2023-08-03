@@ -73,7 +73,7 @@ class RegistrationFormType extends AbstractType
                 ]
             ])
             ->add('title', TextType::class, [
-                'label' => 'Job Title',
+                'label' => 'Titre du poste',
                 'attr' => [
                     'placeholder' => 'Entrez votre nom de post',
                 ],
@@ -82,7 +82,7 @@ class RegistrationFormType extends AbstractType
                 ]
             ])
             ->add('summary', TextareaType::class, [
-                'label' => 'Decription',
+                'label' => 'À propos',
                 'attr' => [
                     'placeholder' => 'Entrez votre nom de post',
                 ],
@@ -91,7 +91,7 @@ class RegistrationFormType extends AbstractType
                 ]
             ])
             ->add('city', TextType::class, [
-                'label' => 'City',
+                'label' => 'Ville',
                 'attr' => [
                     'placeholder' => 'Entrez votre nom ville',
                 ],
@@ -100,7 +100,7 @@ class RegistrationFormType extends AbstractType
                 ]
             ])
             ->add('country', CountryType::class, [
-                'label' => 'Country',
+                'label' => 'Pays',
                 'attr' => [
                     'placeholder' => 'Entrez votre nom de pays',
                 ],
