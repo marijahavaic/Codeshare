@@ -25,6 +25,7 @@ class AppFixtures extends Fixture
         ->setTitle('FULSTACK DEV')
         ->setCity('Paris')
         ->setCountry('France')
+        ->setIsPremium(true)
         ->setIsVerified(true)
         ;
 
