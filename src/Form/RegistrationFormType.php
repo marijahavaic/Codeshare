@@ -63,10 +63,10 @@ class RegistrationFormType extends AbstractType
                         'max' => 50,
                         'maxMessage' => 'Votre adresse email doit contenir au maximum {{ limit }} caractères',
                     ]),
-                    new Regex([
-                        'pattern' => '/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/',
-                        'message' => 'Veuillez entrer une adresse email valide',
-                    ]),
+                    // new Regex([
+                    //     'pattern' => '/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/',
+                    //     'message' => 'Veuillez entrer une adresse email valide',
+                    // ]),
                 ],
                 'attr' => [
                     'class' => 'mb-3 form-control'

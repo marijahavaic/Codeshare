@@ -1,46 +1,73 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Note{% endblock %}
+{% block title %}Note
+{% endblock %}
 
 {% block body %}
-    <section class="row gap-1">
-            <div class="mb-3">
-                <div class="d-flex align-items-center mb-5">
-                    <div class="me-3">
-                        <img src={{ asset('img/favicon.svg') }} class="rounded-pill border d-none d-md-block d-lg-block" width="80">
-                    </div>
-                    <div>
-                        <h3 class="h2 mt-3">{{note.user.username}} 
-                        {% if note.user.isPremium == 0 %}
-                            <span class="rounded-pill bg-warning text-light h6 px-2">Regular</span>
-                            {% else %}
-                            <span class="rounded-pill bg-primary text-light h6 px-2">PRO</span>
-                        {% endif %}</h3>
-                        <p class="fs-6 text-muted text-uppercase">{{note.user.title}}</p>
-                    </div>
-                </div> <!-- User -->
-                <div class="d-flex align-items-center justify-content-between border-bottom mb-3">
-                    <h2>{{ note.title }}</h2>
-                    <div>
-                        <p>
-                            Publié le {{ note.createdAt ? note.createdAt|date('d/m/Y') : '' }}
-                        </p>
-                    </div>
-                </div> <!-- Titre -->
-                <div class="border-bottom mb-5">
-                    <pre>                        
+	<section class="row gap-1">
+		<div class="mb-3">
+			<div class="d-flex align-items-center mb-5">
+				<div class="me-3">
+					<img src={{ asset('img/favicon.svg') }} class="rounded-pill border d-none d-md-block d-lg-block" width="80">
+				</div>
+				<div>
+					<h3 class="h2 mt-3">{{note.user.username}}
+						{% if note.user.isPremium == 0 %}
+							<span class="rounded-pill bg-warning text-light h6 px-2">Regular</span>
+						{% else %}
+							<span class="rounded-pill bg-primary text-light h6 px-2">PRO</span>
+						{% endif %}
+					</h3>
+					<p class="fs-6 text-muted text-uppercase">{{note.user.title}}</p>
+				</div>
+			</div>
+			<!-- User -->
+			<div class="d-flex align-items-center justify-content-between border-bottom mb-3">
+				<h2>{{ note.title }}</h2>
+				<div>
+					<p>
+						Publié le
+						{{ note.createdAt ? note.createdAt|date('d/m/Y') : '' }}
+					</p>
+				</div>
+			</div>
+			<!-- Titre -->
+			<div class="border-bottom mb-5" id="notetoprint">
+				<pre>                        
                         <code>
                         {{ note.content }}
                         </code>
                     </pre>
-                </div> <!-- La note -->
-                <div>
-                    <h6 class="mb-3">Télécharger le code au format PDF</h6>
-                    <a href="#" class="btn btn-primary"><i class="fas fa-file-pdf"></i> Télécharger</a>
-                </div> <!-- Télécharger -->
-        </div></section>
-    {#TODO: Ajoute les liens pour edit uniqment pour admin #}
-    {# <a href="{{ path('app_note_edit', {'id': note.id}) }}">edit</a> #}
+			</div>
+			<!-- La note -->
+			<div>
+				<h6 class="mb-3">Télécharger le code au format PDF</h6>
+                <button class="btn btn-primary" onclick="print()">
+					<i class="fas fa-file-pdf"></i>
+					Télécharger</class=>
+                </button>
+			</div>
+			<!-- Télécharger -->
+		</div>
+	</section>
+	{#TODO: Ajoute les liens pour edit uniqment pour admin #}
+	{# <a href="{{ path('app_note_edit', {'id': note.id}) }}">edit</a> #}
 
-    {# {{ include('note/_delete_form.html.twig') }} #}
+	{# {{ include('note/_delete_form.html.twig') }} #}
+	{# installation de jsPDF #}<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"> </script>
+	<script>
+		import {jsPDF} from "jspdf";
+
+
+        //Variables
+        const note= document.querySelector('#notetoprint');
+        // Default export is a4 paper, portrait, using millimeters for units
+        const doc = new jsPDF();
+
+       function print()
+       {
+         doc.text(note);
+        doc.save("a4.pdf")
+       }
+	</script>
 {% endblock %}
