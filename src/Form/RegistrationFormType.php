@@ -69,6 +69,42 @@ class RegistrationFormType extends AbstractType
                     'class' => 'mb-3 form-control'
                 ]
             ])
+            ->add('title', TextType::class, [
+                'label' => 'Job Title',
+                'attr' => [
+                    'placeholder' => 'Entrez votre nom de post',
+                ],
+                'attr' => [
+                    'class' => 'mb-3 form-control'
+                ]
+            ])
+            ->add('summary', TextType::class, [
+                'label' => 'Decription',
+                'attr' => [
+                    'placeholder' => 'Entrez votre nom de post',
+                ],
+                'attr' => [
+                    'class' => 'mb-3 form-control'
+                ]
+            ])
+            ->add('city', TextType::class, [
+                'label' => 'City',
+                'attr' => [
+                    'placeholder' => 'Entrez votre nom ville',
+                ],
+                'attr' => [
+                    'class' => 'mb-3 form-control'
+                ]
+            ])
+            ->add('country', TextType::class, [
+                'label' => 'Country',
+                'attr' => [
+                    'placeholder' => 'Entrez votre nom de pays',
+                ],
+                'attr' => [
+                    'class' => 'mb-3 form-control'
+                ]
+            ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'label' => 'J\'accepte les conditions d\'utilisation',
