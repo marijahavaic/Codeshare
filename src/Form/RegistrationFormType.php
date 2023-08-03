@@ -13,8 +13,11 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class RegistrationFormType extends AbstractType
 {
@@ -78,7 +81,7 @@ class RegistrationFormType extends AbstractType
                     'class' => 'mb-3 form-control'
                 ]
             ])
-            ->add('summary', TextType::class, [
+            ->add('summary', TextareaType::class, [
                 'label' => 'Decription',
                 'attr' => [
                     'placeholder' => 'Entrez votre nom de post',
@@ -96,7 +99,7 @@ class RegistrationFormType extends AbstractType
                     'class' => 'mb-3 form-control'
                 ]
             ])
-            ->add('country', TextType::class, [
+            ->add('country', CountryType::class, [
                 'label' => 'Country',
                 'attr' => [
                     'placeholder' => 'Entrez votre nom de pays',
@@ -105,6 +108,11 @@ class RegistrationFormType extends AbstractType
                     'class' => 'mb-3 form-control'
                 ]
             ])
+            ->add('profile_img', FileType::class, array(
+                    'required' => false,
+                    'mapped' => false,
+                    'required' => false,
+            ))
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'label' => 'J\'accepte les conditions d\'utilisation',
