@@ -6,6 +6,7 @@ use App\Repository\NoteRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,11 +18,11 @@ class HomepageController extends AbstractController
     #[Route('/', name: 'app_homepage')]
     public function index(
         NoteRepository $notes, // Chargement du repository Note
-        UserRepository $user, // Chargement du repository User
         PaginatorInterface $paginator, //Chargement de PaginatorInterface
         Request $request // Chargement de Request
     ): Response
     {
+        $user = $this->getUser();
         // On créer une requête pour récupérer les snippets
         $query = $notes->findBy(
             ['isPublished' => true], // Pour sélectionner les snippets publiés
@@ -38,7 +39,7 @@ class HomepageController extends AbstractController
         
         return $this->render('homepage/index.html.twig', [
             'notes' => $pagination,
-            'user' => $user->findAll(),
+            'user' => $user,
         ]);
     }
 }
